@@ -7,6 +7,7 @@ PORT = 8000
 
 
 def mdc(a, b):
+    '''Retorna o MDC entre dois números inteiros -- independente do sinal'''
     return a if not b else mdc(b, a % b)
 
 
