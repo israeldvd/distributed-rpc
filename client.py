@@ -1,3 +1,5 @@
+# Este exemplo foi retirado desta doc.: https://tldp.org/HOWTO/XML-RPC-HOWTO/xmlrpc-howto-python.html
+
 import xmlrpc.client
 
 # Create an object to represent our server.
