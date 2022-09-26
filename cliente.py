@@ -1,21 +1,29 @@
 import sys
+import re
 import xmlrpc.client
 
 # Função para validar entrada
 
 
-def validar_entrada_input(texto_string, interruption_key='q'):
-    if texto_string == interruption_key:
-        print("Saindo...")
-        sys.exit(-1)
+def validar_entrada_input(texto, interruption_key='q'):
+    entrada = ''
 
-    entrada = input(texto_string)
+    while True:
+        try:
+            entrada = re.sub("[+-]", "", input(texto))
+        except KeyboardInterrupt:
+            print("Interrupção via teclado. Deixando programa...")
+            sys.exit(-1)
 
-    if entrada.isdigit():
-        return int(entrada)
-    else:
-        entrada = input('Digite um valor inteiro válido\n')
-        return validar_entrada_input(entrada)
+        if entrada.isdigit():
+            break
+        elif entrada == interruption_key:
+            print("Saindo...")
+            sys.exit(-1)
+
+        texto = 'Digite um valor inteiro válido (\'q\' para sair)\n'
+
+    return int(entrada)
 
 
 # Cria um objeto para representar nosso servidor
@@ -24,6 +32,7 @@ servidor = xmlrpc.client.ServerProxy(url_servidor)
 
 # Inspeção dos métodos existentes
 print("Métodos:", servidor.system.listMethods(), end="\n\n")
+print("Método MDC (a ser chamado a seguir):", servidor.system.methodHelp('mdc'))
 
 # Faz chamada ao servidor e obtém nosso resultado
 while True:
