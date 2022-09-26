@@ -20,11 +20,11 @@ Basicamente, este tipo de serviço permite o compartilhamento de diversos recurs
 
 ### 1.2.2. Da implementação
 
-Para a utilização desta biblioteca, espera-se apontar os resultados mediante execução em máquinas distintas, porém os testes serão realizados primordialmente em um mesmo componente, dividindo as partes em processos distintos. Dessa forma, a simulação pode demonstrar a transmissão para processos distintos, o que normalmente se dá em sistemas distribuídos.
+Para a utilização desta biblioteca, espera-se apontar os resultados mediante execução em máquinas distintas, porém os testes serão realizados primordialmente em um mesmo componente, dividindo as partes em processos diferentes que se comunicam, o que normalmente é observado em sistemas distribuídos.
 
 ## 1.3. Revisão bibliográfica
 
-A biblioteca XMLRPC.CLIENT (2022) fornece diversos recursos para o que foi descrito na introdução; genericamente é uma forma de transmitir objetos em diferentes linguagens, como Perl, Java, Python, C, C++ e PHP. Primeiramente, descreve-se sua definição, limitações, e inicia a introdução geral com a classe `ServerProxy`. A comunicação, segundo a referência técnica citada, utiliza a linguagem XML, como o nome da biblioteca sugere, com o protocolo de transporte HTTPS, tornando-a segura quando da transmissão – deve ser notado que a biblioteca não pode impedir a transmissão de dados maliciosos
+A biblioteca `XMLRPC.CLIENT` (2022) fornece diversos recursos para o que foi descrito na introdução; genericamente é uma forma de transmitir objetos em diferentes linguagens, como Perl, Java, Python, C, C++ e PHP. Primeiramente, descreve-se sua definição, limitações, e inicia a introdução geral com a classe `ServerProxy`. A comunicação, segundo a referência técnica citada, utiliza a linguagem XML, como o nome da biblioteca sugere, com o protocolo de transporte HTTPS, tornando-a segura quando da transmissão – deve ser notado que a biblioteca não pode impedir a transmissão de dados maliciosos
 
 O XML (_Extensible Markup Language_, ou linguagem de marcação extensível) é útil para guardar, transmitir e reconstruir dados arbitrários. Segundo o que escreve The Free Dictionary (2022) apud McGraw-Hill (2003), esta linguagem envolve “um conjunto de regras [...] de marcação que provê um protocolo robusto e legível por uma máquina o qual manuseia objetos complexos”. Com isso, nota-se a possibilidade de transmissão de dados estruturados de forma arbitrária (sem pré-definições rígidas), como quando se lida com a notação JSON ou o banco de dados NoSQL.
 
