@@ -4,9 +4,8 @@ import xmlrpc.client
 
 # Função para validar entrada
 
-
 def validar_entrada_input(texto, interruption_key='q'):
-    entrada = ''
+    entrada = None
 
     while True:
         try:
@@ -19,7 +18,7 @@ def validar_entrada_input(texto, interruption_key='q'):
             break
         elif entrada == interruption_key:
             print("Saindo...")
-            sys.exit(-1)
+            return None
 
         texto = 'Digite um valor inteiro válido (\'q\' para sair)\n'
 
@@ -32,12 +31,17 @@ servidor = xmlrpc.client.ServerProxy(url_servidor)
 
 # Inspeção dos métodos existentes
 print("Métodos:", servidor.system.listMethods(), end="\n\n")
-print("Método MDC (a ser chamado a seguir):", servidor.system.methodHelp('mdc'))
+print("Descrição do método mdc (a ser chamado a seguir):",
+      servidor.system.methodHelp('mdc'))
 
 # Faz chamada ao servidor e obtém nosso resultado
 while True:
     a = validar_entrada_input("Digite um valor inteiro ou 'q' para sair:\n")
-    b = validar_entrada_input("Digite o segundo valor:\n")
+    b = validar_entrada_input(
+        "Digite o segundo valor:\n") if a is not None else None
 
-    print("Resultado:", servidor.mdc(a, b))  # Dicionário
-    print()
+    if b is None:
+        break
+
+    print(f"mdc({a}, {b}):", servidor.mdc(a, b))  # Dicionário
+    print("-"*20)
